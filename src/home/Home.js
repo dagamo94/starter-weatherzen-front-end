@@ -24,6 +24,10 @@ function Home() {
     return () => abortController.abort();
   }, []);
 
+  function handleEdit(event){
+    event.preventDefault();
+  }
+
   const tableRows = observations.map(observation => (
     <tr key={observation.observation_id}>
       <th scope="row">{observation.observation_id}</th>
@@ -31,6 +35,7 @@ function Home() {
       <td>{observation.longitude}</td>
       <td>{observation.sky_condition}</td>
       <td>{observation.created_at}</td>
+      <td><button type="button" className="btn btn-secondary" onClick={handleEdit}>Edit</button></td>
     </tr>
   ));
 
@@ -46,6 +51,7 @@ function Home() {
             <th scope="col">Longitude</th>
             <th scope="col">Sky Condition</th>
             <th scope="col">Created</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
